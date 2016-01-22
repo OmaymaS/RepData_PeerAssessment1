@@ -36,7 +36,7 @@ data<-read.csv("activity.csv", stringsAsFactors = F)
 ```{r}
 steps.day<-data %>%
         group_by(date) %>%
-        summarise(steps.total=sum(steps,na.rm=T))
+        summarise(steps.total=sum(steps,na.rm=TRUE))
 ```
 -(steps.day) should contain values as follows:
 

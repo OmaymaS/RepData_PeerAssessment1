@@ -34,7 +34,7 @@ data<-read.csv("activity.csv", stringsAsFactors = F)
 ```r
 steps.day<-data %>%
         group_by(date) %>%
-        summarise(steps.total=sum(steps,na.rm=T))
+        summarise(steps.total=sum(steps,na.rm=TRUE))
 ```
 -(steps.day) should contain values as follows:
 
@@ -58,7 +58,7 @@ head(steps.day)
 ###>A histogram of the total number of steps taken each day (optional breaks=10) is created as follows:
 
 ```r
-hist(steps.day$steps.total,breaks=10,xlab="Total number of steps taken each day",main="Histogram of the total number of steps taken each day")
+hist(steps.day$steps.total,xlab="Total number of steps taken each day",main="Histogram of the total number of steps taken each day")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)\
@@ -158,7 +158,7 @@ data_new$weekday<-as.factor(ifelse(isWeekday(data_new$date),"Weekday","Weekend")
 ```
 
 ### >A panel plot is created containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
--This is similar to the previous time series plotted based on  steps5. But the data is grouped by both interval and weekday to be able to seperate them in a panel plot as follows. 
+-This is similar to the previous time series. But the data is grouped by both interval and weekday to be able to seperate them in a panel plot as follows:
 
 ```r
 weekdays_mean<-data_new %>%
