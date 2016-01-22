@@ -58,10 +58,10 @@ head(steps.day)
 ###>A histogram of the total number of steps taken each day (optional breaks=10) is created as follows:
 
 ```r
-hist(steps.day$steps.total,xlab="Total number of steps taken each day",main="Histogram of the total number of steps taken each day")
+hist(steps.day$steps.total,breaks=10,xlab="Total number of steps taken each day",main="Histogram of the total number of steps taken each day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)\
+![](PA1_template_files/figure-html/Plot1-1.png)\
 
 ### >The mean and median of the total number of steps taken per day are calculated as follows:
 
@@ -83,11 +83,15 @@ steps.median<-median(steps.day$steps.total)
 steps5<-data %>%
         group_by(interval) %>%
         summarise(average=mean(steps,na.rm=T))
+```
+-The time series is plotted as follows:
 
+
+```r
 plot(steps5$interval,steps5$average,type="l",xlab="Interval",ylab="Average number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)\
+![](PA1_template_files/figure-html/Plot2-1.png)\
 
 
 ### >The 5-minute interval, on average across all the days in the dataset, which contains the maximum number of steps is found as follows:
@@ -136,7 +140,7 @@ steps.day2<-data_new %>%
 hist(steps.day2$steps.total,breaks=10,xlab="Total number of steps taken each day",main="Histogram of the total number of steps taken each day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-13-1.png)\
+![](PA1_template_files/figure-html/Plot3-1.png)\
 
 ### >The mean and median total number of steps taken per day with the new data are calculated as follows:
 
@@ -168,4 +172,4 @@ weekdays_mean<-data_new %>%
 xyplot(average~interval|factor(weekday),data=weekdays_mean,layout=c(1,2),type="l",xlab="Interval",ylab="Average number of steps taken, averaged across all days")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-16-1.png)\
+![](PA1_template_files/figure-html/Plot4-1.png)\
