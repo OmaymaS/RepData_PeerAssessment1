@@ -4,8 +4,22 @@ output:
   html_document:
     keep_md: true
 ---
-## Calling libraries
+## Pre-Steps
+### -Download the data and unzip it from the given url. In case the url changes, replace it.
 ```{r results='hide', message=FALSE, warning=FALSE}
+#download and unzip data
+data_url<-"https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
+
+if(!file.exists("activity.zip")) 
+        {download.file(data_url, destfile = "activity.zip",mode="wb")}
+
+if(!file.exists("activity.csv"))
+        {unzip("activity.zip","activity.csv")}
+```
+
+### -Call the libraries required for the next steps.
+```{r}
+#calling libraries
 library(dplyr)
 library(timeDate)
 library(lattice)
@@ -13,6 +27,7 @@ library(lattice)
 
 ## Loading and preprocessing the data
 ```{r}
+
 data<-read.csv("activity.csv", stringsAsFactors = F)
 ```
 ## What is mean total number of steps taken per day?
